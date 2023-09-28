@@ -79,8 +79,9 @@ a {
 img {
   display: block;
   width: 100%;
-  height: auto;
   border-radius: 1rem;
+  max-height: 20rem;
+  object-fit: cover;
 }
 
 :is(span, p, a).muted {
@@ -110,8 +111,8 @@ button {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
-@media screen and (min-width: 768px){
-  .content-block{
+@media screen and (min-width: 768px) {
+  .content-block {
     padding-bottom: 4rem;
   }
 }
@@ -125,12 +126,11 @@ button {
 .content-block > img {
   grid-column: 1 / -1;
 }
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
   .content-block > img {
     grid-column: span 4;
   }
 }
-
 
 .content-block > span.pill {
   grid-column: span 2;

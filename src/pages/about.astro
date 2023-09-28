@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
+import profilePicture from '../images/mathias.jpeg'
 const pageTitle = 'About'
 ---
 
 <BaseLayout title={pageTitle}>
   <div class='content-block'>
-    <img
-      src='https://images.unsplash.com/photo-1621176302201-bdf4e675d7c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80'
-    />
+    <Image src={profilePicture} alt='Picture of me enjoying a beer' />
   </div>
   <div class='content-block'>
     <p class='muted'>About</p>

@@ -162,7 +162,7 @@ const pathname: string = Astro.url.pathname
     const navToggle = document.getElementById('nav-toggle')
     const navBlur = document.getElementById('navigation-blur')
 
-    navToggle.addEventListener('click', () => {
+    const handleNavigationCollapse = () => {
       const navigation = navToggle.parentNode
       const btnText = navToggle.children[1]
 
@@ -177,6 +177,8 @@ const pathname: string = Astro.url.pathname
         btnText.setHTML('Open navigation')
         navBlur.classList.remove('true')
       }
-    })
+    }
+    navToggle.addEventListener('touch', handleNavigationCollapse)
+    navToggle.addEventListener('click', handleNavigationCollapse)
   })
 </script>

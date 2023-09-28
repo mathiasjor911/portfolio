@@ -39,6 +39,7 @@ const pathname: string = Astro.url.pathname
     transition: all 0.4s ease-out;
     backdrop-filter: blur(0px);
     background: none;
+    -webkit-backdrop-filter: blur(0px);
   }
   @media screen and (min-width: 768px) {
     #navigation-blur {
@@ -48,6 +49,7 @@ const pathname: string = Astro.url.pathname
 
   #navigation-blur.true {
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     background: rgba(0 0 0 / 0.08);
   }
 

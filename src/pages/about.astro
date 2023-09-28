@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+const pageTitle = 'About'
+---
+
+<BaseLayout title={pageTitle}>
+  <div class='content-block'>
+    <img
+      src='https://images.unsplash.com/photo-1621176302201-bdf4e675d7c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80'
+    />
+  </div>
+  <div class='content-block'>
+    <p class='muted'>About</p>
+    <p>
+      I'm Mathias—a creative enthusiast with a passion for graphic design and
+      web development. From my early days immersed in crafting PowerPoint
+      presentations of family members, to playing around with software like
+      Photoshop, Inkscape, and Blender, I've honed my interest for design.
+    </p>
+
+    <p>
+      At a later age I wanted to make more of my designs, so I ventured into
+      coding to turn my design concepts into interactive experiences. Beyond the
+      screen, I find joy in analog photography, savoring music, brewing the
+      perfect cup of coffee, and cherishing moments with friends.
+    </p>
+  </div>
+  <div class='content-block'>
+    <p class='muted'>Things I enjoy</p>
+    <ul>
+      <li>My morning coffee</li>
+      <li>Discovering new music</li>
+      <li>Cereal... I love cereal</li>
+      <li>Smiling at strangers</li>
+      <li>Watching Formular 1</li>
+      <li>Staying updated on latest tech</li>
+      <li>Teenage engineering</li>
+    </ul>
+  </div>
+  <div class='content-block'>
+    <p class='muted'>Experience</p>
+    <p>
+      I earned my professional bachelor's degree in Web Development back in
+      February 2021. Alongside my studies, I also ventured into freelance work,
+      gaining valuable experience as a frontend developer. During my studies, I
+      gained valuable experience through two internships—one at <a
+        class='underline'
+        href='https://nuuday.dk/'>Nuuday</a
+      > and the other at <a class='underline' href='https://topdanmark.dk/'
+        >Topdanmark</a
+      >, where I’m now working fulltime as frontend developer.
+    </p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,182 @@
+---
+import type { Code } from 'astro:components'
+const pathname: string = Astro.url.pathname
+---
+
+<style>
+  header {
+    grid-column: 1 / -1;
+  }
+  .header-info {
+    grid-column: span 6 / span 6;
+  }
+  @media screen and (min-width: 1024px) {
+    .header-info {
+      grid-column: span 4 / span 4;
+    }
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo,
+  .path {
+    grid-column: span 3 / span 3;
+  }
+  @media screen and (min-width: 1024px) {
+    .logo,
+    .path {
+      grid-column: span 2 / span 2;
+    }
+  }
+  #navigation-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    transition: all 0.4s ease-out;
+    backdrop-filter: blur(0px);
+    pointer-events: none;
+  }
+  @media screen and (min-width: 768px) {
+    #navigation-blur {
+      display: none;
+    }
+  }
+
+  #navigation-blur.true {
+    backdrop-filter: blur(4px);
+    background: rgba(0 0 0 / 0.08);
+  }
+
+  .navigation {
+    position: fixed;
+    top: unset;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    border-top: 1px solid var(--border-color);
+    --transform-y: 0;
+    transform: translate(0, var(--transform-y));
+    background: var(--background-color);
+    transition: all 0.2s ease-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  .navigation.collapsed {
+    --transform-y: calc(100% - 52px);
+  }
+  .navigation > * {
+    padding: 1rem;
+  }
+  #nav-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    text-align: left;
+    cursor: pointer;
+  }
+  #nav-toggle:hover {
+    background: var(--hover-color);
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .navigation {
+      position: static;
+      z-index: 1;
+      transform: none;
+      display: flex;
+      justify-content: flex-end;
+      grid-column: span 6 / span 6;
+      border: none;
+    }
+    .navigation > * {
+      padding: 0;
+    }
+    #nav-toggle {
+      display: none;
+    }
+    .nav-list {
+      grid-column: 1 /-1;
+      flex-direction: row;
+      gap: 3rem;
+    }
+    .footer {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .navigation {
+      grid-column: 11 / -1;
+    }
+  }
+</style>
+
+<nav class='header-info small-layout-grid'>
+  <div class='logo'>
+    <a href='/'>Mathias Jørgensen</a>
+    <span class='muted'>{pathname}</span>
+  </div>
+  <div class='path'>
+    <span class='muted'>Frontend Developer</span>
+  </div>
+</nav>
+<div id='navigation-blur'></div>
+<div class='navigation collapsed'>
+  <button class='display-sm' id='nav-toggle'>
+    <i class='ph ph-list'></i>
+    <span class='muted'>Open navigation</span>
+  </button>
+  <nav class='nav-list'>
+    <a class='nav-item' href='/'>Home</a>
+    <a class='nav-item' href='/about/'>About</a>
+    <a class='nav-item' href='/blog/'>Projects</a>
+    <a class='nav-item' href='/photos/'>Photos</a>
+  </nav>
+  <div class='footer'>
+    <span class='muted'>Want to get in touch?</span>
+    <a href='mailto:mj@mathiasjorgensen.dk'>e-mail</a>
+    <a href='tel:+4526460034'>phone</a>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const navToggle = document.getElementById('nav-toggle')
+    const navBlur = document.getElementById('navigation-blur')
+
+    navToggle.addEventListener('click', () => {
+      const navigation = navToggle.parentNode
+      const btnText = navToggle.children[1]
+
+      const collapsedYValue = navigation.style.getPropertyValue('--transform-y')
+
+      if (navigation.classList.contains('collapsed')) {
+        navigation.classList.remove('collapsed')
+        navBlur.classList.add('true')
+        btnText.setHTML('Close navigation')
+      } else {
+        navigation.classList.add('collapsed')
+        btnText.setHTML('Open navigation')
+        navBlur.classList.remove('true')
+      }
+    })
+  })
+</script>

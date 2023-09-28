@@ -1,0 +1,56 @@
+---
+//Global styles
+import '../styles/global.css'
+//use Astro viewTransistions
+import { ViewTransitions } from 'astro:transitions'
+//Import navbar
+import Navbar from '../components/Navbar.astro'
+//Props
+const { title } = Astro.props
+---
+
+<style>
+  main {
+    padding-top: 4rem;
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+  main > * {
+    padding-bottom: 4rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    main {
+      grid-column: 4 / span 6;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    main {
+      grid-column: 4 / span 6;
+    }
+  }
+</style>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <ViewTransitions />
+    <link
+      rel='stylesheet'
+      href='https://unpkg.com/normalize.css@8.0.1/normalize.css'
+    />
+    <link
+      rel='stylesheet'
+      type='text/css'
+      href='https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css'
+    />
+    <title>{`${title} - Mathias Jørgensen`}</title>
+  </head>
+  <body class='base-layout-grid'>
+    <Navbar transition:persist />
+    <main>
+      <slot />
+    </main>
+    <script src='https://unpkg.com/@phosphor-icons/web@2.0.3'></script>
+  </body>
+</html>

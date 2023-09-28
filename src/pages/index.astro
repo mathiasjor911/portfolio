@@ -1,16 +1,19 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro'
 
+const pageTitle = 'Home'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={pageTitle}>
+  <div class='content-block'>
+    <span class='pill'> This is just a test, nothing else</span>
+    <p>Hi, I’m Mathias</p>
+    <p>
+      I’m a frontend developer based in Odense, Denmark. <br />Currently
+      developing user-friendly self-service solutions at <a
+        class='underline'
+        href='https://topdanmark.dk'>Topdanmark</a
+      >.
+    </p>
+  </div>
+</BaseLayout>

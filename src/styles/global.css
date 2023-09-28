@@ -105,9 +105,15 @@ button {
 }
 
 .content-block {
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@media screen and (min-width: 768px){
+  .content-block{
+    padding-bottom: 4rem;
+  }
 }
 .content-block > p {
   grid-column: 1 / -1;

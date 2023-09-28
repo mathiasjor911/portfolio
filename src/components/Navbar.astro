@@ -38,7 +38,7 @@ const pathname: string = Astro.url.pathname
     z-index: 10;
     transition: all 0.4s ease-out;
     backdrop-filter: blur(0px);
-    pointer-events: none;
+    background: none;
   }
   @media screen and (min-width: 768px) {
     #navigation-blur {
@@ -163,21 +163,23 @@ const pathname: string = Astro.url.pathname
     const navBlur = document.getElementById('navigation-blur')
 
     const handleNavigationCollapse = () => {
-      console.log('Called')
-      const navigation = navToggle.parentNode
-      const btnText = navToggle.children[1]
-      const collapsedYValue = navigation.style.getPropertyValue('--transform-y')
-      if (navigation.classList.contains('collapsed')) {
-        navigation.classList.remove('collapsed')
-        navBlur.classList.add('true')
-        btnText.setHTML('Close navigation')
-      } else {
-        navigation.classList.add('collapsed')
-        btnText.setHTML('Open navigation')
-        navBlur.classList.remove('true')
+      if (navToggle) {
+        const navigation = navToggle.parentNode
+        const btnText = navToggle.children[1]
+        const collapsedYValue =
+          navigation.style.getPropertyValue('--transform-y')
+        if (navigation.classList.contains('collapsed')) {
+          navigation.classList.remove('collapsed')
+          navBlur.classList.add('true')
+          btnText.setHTML('Close navigation')
+        } else {
+          navigation.classList.add('collapsed')
+          btnText.setHTML('Open navigation')
+          navBlur.classList.remove('true')
+        }
       }
+      // navToggle.addEventListener('touch', handleNavigationCollapse)
+      navToggle.addEventListener('click', handleNavigationCollapse)
     }
-    // navToggle.addEventListener('touch', handleNavigationCollapse)
-    navToggle.addEventListener('click', handleNavigationCollapse)
   })
 </script>

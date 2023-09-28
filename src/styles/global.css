@@ -123,6 +123,7 @@ button {
   .content-block > img {
     grid-column: span 4;
   }
+}
 
 
 .content-block > span.pill {

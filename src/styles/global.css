@@ -143,12 +143,3 @@ a.underline:hover {
 a.underline:hover::after {
   opacity: 0;
 }
-
-span.pill {
-  display: block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
-  background: rgba(69 170 242 / 0.2);
-  border: 1px solid #45aaf2;
-  color: #45aaf2;
-}

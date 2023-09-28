@@ -163,11 +163,10 @@ const pathname: string = Astro.url.pathname
     const navBlur = document.getElementById('navigation-blur')
 
     const handleNavigationCollapse = () => {
+      console.log('Called')
       const navigation = navToggle.parentNode
       const btnText = navToggle.children[1]
-
       const collapsedYValue = navigation.style.getPropertyValue('--transform-y')
-
       if (navigation.classList.contains('collapsed')) {
         navigation.classList.remove('collapsed')
         navBlur.classList.add('true')

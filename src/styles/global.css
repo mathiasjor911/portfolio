@@ -117,8 +117,14 @@ button {
   grid-column: 1 / -1;
 }
 .content-block > img {
-  grid-column: span 4;
+  grid-column: 1 / -1;
 }
+@media screen and (min-width: 768px){
+  .content-block > img {
+    grid-column: span 4;
+  }
+
+
 .content-block > span.pill {
   grid-column: span 2;
 }

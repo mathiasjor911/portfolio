@@ -165,24 +165,20 @@ const pathname: string = Astro.url.pathname
     const navToggle = document.getElementById('nav-toggle')
     const navBlur = document.getElementById('navigation-blur')
 
-    const handleNavigationCollapse = () => {
-      if (navToggle) {
-        const navigation = navToggle.parentNode
-        const btnText = navToggle.children[1]
-        const collapsedYValue =
-          navigation.style.getPropertyValue('--transform-y')
-        if (navigation.classList.contains('collapsed')) {
-          navigation.classList.remove('collapsed')
-          navBlur.classList.add('true')
-          btnText.setHTML('Close navigation')
-        } else {
-          navigation.classList.add('collapsed')
-          btnText.setHTML('Open navigation')
-          navBlur.classList.remove('true')
-        }
+    navToggle.addEventListener('click', () => {
+      const navigation = navToggle.parentNode
+      const btnText = navToggle.children[1]
+      const collapsedYValue = navigation.style.getPropertyValue('--transform-y')
+      if (navigation.classList.contains('collapsed')) {
+        navigation.classList.remove('collapsed')
+        navBlur.classList.add('true')
+        btnText.setHTML('Close navigation')
+      } else {
+        navigation.classList.add('collapsed')
+        btnText.setHTML('Open navigation')
+        navBlur.classList.remove('true')
       }
-      // navToggle.addEventListener('touch', handleNavigationCollapse)
-      navToggle.addEventListener('click', handleNavigationCollapse)
-    }
+    })
+    // navToggle.addEventListener('touch', handleNavigationCollapse)
   })
 </script>

@@ -110,6 +110,11 @@ button {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
+@media screen and (min-width: 1280px) {
+  .content-block {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 
 @media screen and (min-width: 768px) {
   .content-block {
@@ -129,6 +134,16 @@ button {
 @media screen and (min-width: 768px) {
   .content-block > img {
     grid-column: span 4;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .content-block > img {
+    grid-column: span 3;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .content-block > img {
+    grid-column: span 2;
   }
 }
 

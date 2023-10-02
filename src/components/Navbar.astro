@@ -1,5 +1,5 @@
 ---
-import type { Code } from 'astro:components'
+import Footer from './Footer.astro'
 const pathname: string = Astro.url.pathname
 ---
 
@@ -36,10 +36,9 @@ const pathname: string = Astro.url.pathname
     width: 100vw;
     height: 100vh;
     z-index: 10;
-    transform: translate3d(0, 0, 0); /* Trying to fix this shit in safari */
     transition: all 0.4s ease-out;
-    backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
     background: none;
     pointer-events: none;
   }
@@ -50,9 +49,10 @@ const pathname: string = Astro.url.pathname
   }
 
   #navigation-blur.true {
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     background: rgba(0 0 0 / 0.08);
+    pointer-events: all;
   }
 
   .navigation {
@@ -95,7 +95,7 @@ const pathname: string = Astro.url.pathname
     flex-direction: column;
     gap: 0.5rem;
   }
-  .footer {
+  footer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -122,7 +122,7 @@ const pathname: string = Astro.url.pathname
       flex-direction: row;
       gap: 3rem;
     }
-    .footer {
+    footer {
       display: none;
     }
   }
@@ -151,14 +151,13 @@ const pathname: string = Astro.url.pathname
   <nav class='nav-list'>
     <a class='nav-item' href='/'>Home</a>
     <a class='nav-item' href='/about/'>About</a>
-    <a class='nav-item' href='/blog/'>Projects</a>
-    <a class='nav-item' href='/photos/'>Photos</a>
+    <a class='nav-item' href='/projects/'>Projects</a>
   </nav>
-  <div class='footer'>
+  <footer class='footer'>
     <span class='muted'>Want to get in touch?</span>
     <a href='mailto:mj@mathiasjorgensen.dk'>e-mail</a>
     <a href='tel:+4526460034'>phone</a>
-  </div>
+  </footer>
 </div>
 
 <script>
@@ -169,17 +168,17 @@ const pathname: string = Astro.url.pathname
     navToggle.addEventListener('click', () => {
       const navigation = navToggle.parentNode
       const btnText = navToggle.children[1]
-      const collapsedYValue = navigation.style.getPropertyValue('--transform-y')
       if (navigation.classList.contains('collapsed')) {
+        console.log('Open')
         navigation.classList.remove('collapsed')
         navBlur.classList.add('true')
         btnText.setHTML('Close navigation')
       } else {
+        console.log('Closed')
         navigation.classList.add('collapsed')
         btnText.setHTML('Open navigation')
         navBlur.classList.remove('true')
       }
     })
-    // navToggle.addEventListener('touch', handleNavigationCollapse)
   })
 </script>

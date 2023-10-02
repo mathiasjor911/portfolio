@@ -59,12 +59,14 @@ body {
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 2rem;
+  min-height: 100vh;
 }
 
 .base-layout-grid {
   display: grid;
   grid-template-columns: var(--grid-col-layout);
   column-gap: var(--grid-column-gap);
+  grid-template-rows: auto 1fr auto;
 }
 .small-layout-grid {
   display: grid;
@@ -145,6 +147,10 @@ button {
   .content-block > img {
     grid-column: span 2;
   }
+}
+
+.content-block > p.muted + p {
+  margin-top: 0;
 }
 
 .content-block > span.pill {

@@ -29,6 +29,18 @@ const { title } = Astro.props
       grid-column: 5 / span 4;
     }
   }
+  footer {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    footer {
+      grid-column: span 2;
+      grid-row: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
 </style>
 <html lang='en'>
   <head>
@@ -51,5 +63,10 @@ const { title } = Astro.props
     <main>
       <slot />
     </main>
+    <footer class='footer'>
+      <span class='muted'>Want to get in touch?</span>
+      <a href='mailto:mj@mathiasjorgensen.dk'>e-mail</a>
+      <a href='tel:+4526460034'>phone</a>
+    </footer>
   </body>
 </html>

@@ -37,7 +37,6 @@ const pathname: string = Astro.url.pathname
     height: 100vh;
     z-index: 10;
     transition: all 0.4s ease-out;
-    -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
     background: none;
     pointer-events: none;
@@ -51,7 +50,7 @@ const pathname: string = Astro.url.pathname
   #navigation-blur.true {
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
-    background: rgba(0 0 0 / 0.08);
+    background: rgba(0 0 0 / 0.15);
     pointer-events: all;
   }
 
@@ -95,7 +94,7 @@ const pathname: string = Astro.url.pathname
     flex-direction: column;
     gap: 0.5rem;
   }
-  footer {
+  .nav-footer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -122,7 +121,7 @@ const pathname: string = Astro.url.pathname
       flex-direction: row;
       gap: 3rem;
     }
-    footer {
+    .nav-footer {
       display: none;
     }
   }
@@ -153,7 +152,7 @@ const pathname: string = Astro.url.pathname
     <a class='nav-item' href='/about/'>About</a>
     <a class='nav-item' href='/projects/'>Projects</a>
   </nav>
-  <footer class='footer'>
+  <footer class='nav-footer'>
     <span class='muted'>Want to get in touch?</span>
     <a href='mailto:mj@mathiasjorgensen.dk'>e-mail</a>
     <a href='tel:+4526460034'>phone</a>

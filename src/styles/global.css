@@ -128,7 +128,8 @@ button {
     padding-bottom: 4rem;
   }
 }
-.content-block > p {
+.content-block > p,
+.content-block > span {
   grid-column: 1 / -1;
 }
 

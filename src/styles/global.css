@@ -55,7 +55,7 @@ ul {
 body {
   background: var(--background-color);
   color: var(--primary-color);
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: 'Helvetica Neue', 'Open Sans', 'Arial', sans-serif;
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 2rem;

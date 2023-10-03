@@ -37,6 +37,7 @@ const pathname: string = Astro.url.pathname
     height: 100vh;
     z-index: 10;
     transition: all 0.4s ease-out;
+    -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
     background: none;
     pointer-events: none;
@@ -48,6 +49,7 @@ const pathname: string = Astro.url.pathname
   }
 
   #navigation-blur.true {
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     background: rgba(0 0 0 / 0.15);
     pointer-events: all;
@@ -162,21 +164,27 @@ const pathname: string = Astro.url.pathname
   document.addEventListener('astro:page-load', () => {
     const navToggle = document.getElementById('nav-toggle')
     const navBlur = document.getElementById('navigation-blur')
+    if (navToggle && navBlur) {
+      navToggle.addEventListener('click', () => {
+        const navigation = navToggle.parentElement
+        const btnText = navToggle.children[1]
 
-    navToggle.addEventListener('click', () => {
-      const navigation = navToggle.parentNode
-      const btnText = navToggle.children[1]
-      if (navigation.classList.contains('collapsed')) {
-        console.log('Open')
-        navigation.classList.remove('collapsed')
-        navBlur.classList.add('true')
-        btnText.setHTML('Close navigation')
-      } else {
-        console.log('Closed')
-        navigation.classList.add('collapsed')
-        btnText.setHTML('Open navigation')
-        navBlur.classList.remove('true')
-      }
-    })
+        if (navigation) {
+          if (navigation.classList.contains('collapsed')) {
+            // console.log('Open')
+            document.body.classList.add('overflow-h')
+            navigation.classList.remove('collapsed')
+            navBlur.classList.add('true')
+            btnText.innerHTML = 'Close navigation'
+          } else {
+            // console.log('Closed')
+            document.body.classList.remove('overflow-h')
+            navigation.classList.add('collapsed')
+            btnText.innerHTML = 'Open navigation'
+            navBlur.classList.remove('true')
+          }
+        }
+      })
+    }
   })
 </script>

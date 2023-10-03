@@ -60,6 +60,11 @@ body {
   line-height: 1.25rem;
   padding: 2rem;
   min-height: 100vh;
+  overflow: initial;
+}
+
+body.overflow-h {
+  overflow: hidden;
 }
 
 .base-layout-grid {
